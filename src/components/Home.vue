@@ -4,7 +4,7 @@
     <div class="search_input">
       <input type="text" v-model="search" placeholder="Поиск...">
     </div>
-    <router-link to="/New">
+    <router-link to="new">
       <button
       >
         Add new post
