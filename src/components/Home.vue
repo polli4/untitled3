@@ -1,4 +1,3 @@
-<script src="../store/index.js"></script>
 <template>
   <div class="all">
     <div class="search_input">
@@ -12,17 +11,17 @@
     </router-link>
     <div class="articles">
       <div
-          class="first"
           v-for="articles in filteredArticles"
           :key="articles.title"
-          @click='isShow =! isShow'
+          class="first"
+          @click="isShow =! isShow"
       >
          Blog title: {{ articles.title }}
          ❤{{ articles.likes}}
          👁{{ articles.views}}
         <div
-            class="showing"
             v-if="isShow"
+            class="showing"
         >
           Blog content: {{ articles.content }}
         </div>
@@ -32,7 +31,6 @@
 </template>
 
 <script>
-
 
 export default {
   name: 'Home',
