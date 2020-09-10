@@ -12,7 +12,18 @@ const routes = [
       path: '/',
       name: 'Home',
       component: () => import('@/components/Home.vue')
-    }]
+    },
+    {
+        meta: {
+            title: 'Новая',
+            type: '',
+            icon: 'mdi-home',
+        },
+        path: '/New',
+        name: 'New',
+        component: () => import('@/components/New.vue')
+    }
+]
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,

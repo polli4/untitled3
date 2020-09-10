@@ -3,20 +3,29 @@
   <div class="all">
     <div class="search_input">
       <input type="text" v-model="search" placeholder="Поиск...">
-      <button
-          class="searching"
-          type="submit"
-      >
-        search
-      </button>
     </div>
+    <router-link to="/New">
+      <button
+      >
+        Add new post
+      </button>
+    </router-link>
     <div class="articles">
       <div
           class="first"
-          v-for="(articles, index) in filtedBlogs"
+          v-for="articles in filtedBlogs"
           :key="articles.title"
+          @click='isShow=!isShow'
       >
-        <router-link to="/"> {{ index + 1 }}.{{ articles.title }}</router-link> ❤{{ articles.likes}} 👁{{ articles.views}}
+         Blog title: {{ articles.title }}
+         ❤{{ articles.likes}}
+         👁{{ articles.views}}
+        <div
+            class="showing"
+            v-if="isShow"
+        >
+          Blog content: {{ articles.content }}
+        </div>
       </div>
     </div>
   </div>
@@ -29,7 +38,8 @@ export default {
   name: "Home",
   data(){
     return{
-      search: ''
+      search: '',
+      isShow: false,
     }
   },
     computed: {
@@ -40,7 +50,7 @@ export default {
         return this.$store.state.articles.filter((articles) =>{
           return articles.title.match(this.search);
         })
-      }
+      },
     },
     methods:{
 
@@ -53,12 +63,12 @@ export default {
 .articles{
   display: flex;
   flex-flow: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
 }
 .first{
   display: flex;
-  background: lightskyblue;
+  background: #45b3f8;
   font-family: 'Kufam', cursive;
   color: white;
   border-width: 10px;
@@ -68,36 +78,45 @@ export default {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  flex-flow: column;
+
 }
 .first:hover{
   background: darkcyan;
   width: 42%;
   height: 110px;
 }
-input{
+input, textarea{
   display: flex;
   height: 30px;
-  margin-bottom: 20px;
-  width: 75%;
+  width: 40%;
   align-items: center;
   background: #f2fafa;
   border-radius: 20px;
   font-family: 'Kufam', cursive;
   color: blue;
   font-size: 20px;
+  margin-bottom: 20px;
 }
-.searching{
+.showing{
+  color: mistyrose;
+}
+button{
   display: flex;
-  background: lightskyblue;
-  border-radius: 20px;
-  width: 100px;
-  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: #a4d8f5;
   font-family: 'Kufam', cursive;
   color: white;
-  font-size: 17px;
-  justify-content: center;
-  align-items: center;
+  font-size: 25px;
+  height: 40px;
+  width: 40%;
+  border-radius: 10px;
+  text-decoration: white;
+  margin-bottom: 10px;
+
 }
+
 </style>
 
 
