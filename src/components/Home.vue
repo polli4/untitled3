@@ -13,9 +13,9 @@
     <div class="articles">
       <div
           class="first"
-          v-for="articles in filtedBlogs"
+          v-for="articles in filteredArticles"
           :key="articles.title"
-          @click='isShow=!isShow'
+          @click='isShow =! isShow'
       >
          Blog title: {{ articles.title }}
          ❤{{ articles.likes}}
@@ -35,26 +35,21 @@
 
 
 export default {
-  name: "Home",
-  data(){
+  name: 'Home',
+  data () {
     return{
       search: '',
       isShow: false,
     }
   },
-    computed: {
-      articles() {
-        return this.$store.state.articles
-      },
-      filtedBlogs: function (){
-        return this.$store.state.articles.filter((articles) =>{
-          return articles.title.match(this.search);
-        })
-      },
+  computed: {
+    filteredArticles: function () {
+      return this.$store.state.articles.filter((articles) =>{
+        return articles.title.match(this.search);
+      })
     },
-    methods:{
-
-    }
+  },
+  methods: {}
   }
 
 </script>
