@@ -1,28 +1,26 @@
-<script src="../store/index.js"></script>
 <template>
   <div class="all">
     <div class="search_input">
       <input type="text" v-model="search" placeholder="Поиск...">
     </div>
-    <router-link to="/New">
-      <button
-      >
+    <router-link to="new">
+      <button>
         Add new post
       </button>
     </router-link>
     <div class="articles">
       <div
-          class="first"
-          v-for="articles in filtedBlogs"
+          v-for="articles in filteredArticles"
           :key="articles.title"
-          @click='isShow=!isShow'
+          class="first"
+          @click="isShow =! isShow"
       >
          Blog title: {{ articles.title }}
          ❤{{ articles.likes}}
          👁{{ articles.views}}
         <div
-            class="showing"
             v-if="isShow"
+            class="showing"
         >
           Blog content: {{ articles.content }}
         </div>
@@ -33,28 +31,22 @@
 
 <script>
 
-
 export default {
-  name: "Home",
-  data(){
+  name: 'Home',
+  data () {
     return{
       search: '',
       isShow: false,
     }
   },
-    computed: {
-      articles() {
-        return this.$store.state.articles
-      },
-      filtedBlogs: function (){
-        return this.$store.state.articles.filter((articles) =>{
-          return articles.title.match(this.search);
-        })
-      },
+  computed: {
+    filteredArticles: function () {
+      return this.$store.state.articles.filter((articles) =>{
+        return articles.title.match(this.search);
+      })
     },
-    methods:{
-
-    }
+  },
+  methods: {}
   }
 
 </script>
