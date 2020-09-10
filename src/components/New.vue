@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "New"
+  name: 'New'
 }
 </script>
 
