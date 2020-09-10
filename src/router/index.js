@@ -19,7 +19,7 @@ const routes = [
             type: '',
             icon: 'mdi-home',
         },
-        path: '/New',
+        path: '/new',
         name: 'New',
         component: () => import('@/components/New.vue')
     }
