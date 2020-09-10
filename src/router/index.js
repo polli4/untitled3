@@ -14,14 +14,14 @@ const routes = [
       component: () => import('@/components/Home.vue')
     },
     {
-      meta: {
-        title: 'Новая',
-        type: '',
-        icon: 'mdi-home',
-      },
-      path: '/new',
-      name: 'New',
-      component: () => import('@/components/New.vue')
+        meta: {
+            title: 'Новая',
+            type: '',
+            icon: 'mdi-home',
+        },
+        path: '/new',
+        name: 'New',
+        component: () => import('@/components/New.vue')
     }
 ]
 const router = new VueRouter({
