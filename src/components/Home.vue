@@ -1,5 +1,11 @@
 <template>
     <div class="articles">
+      <button
+          @onclick="isShow=''"
+          class="close"
+      >
+        ❌
+      </button>
       <div class="search_input">
         <input type="text" v-model="search" placeholder="Поиск...">
       </div>
@@ -14,12 +20,13 @@
           v-for="articles in filteredArticles"
           :key="articles.title"
           class="first"
+          @click="isShow = articles.title"
       >
          Blog title: {{ articles.title }}
          ❤{{ articles.likes}}
          👁{{ articles.views}}
         <div
-            v-show="articles.isShow"
+            v-if="isShow === articles.title"
             class="showing"
         >
           Blog content: {{ articles.content }}
@@ -35,7 +42,7 @@ export default {
     data () {
       return{
         search: '',
-        isShow: false,
+        isShow: '',
       }
     },
     computed: {
@@ -72,6 +79,7 @@ export default {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 .first:hover{
   background: darkcyan;
@@ -112,8 +120,14 @@ button{
   border-radius: 10px;
   text-decoration: white;
   margin-bottom: 10px;
+  cursor: pointer;
 }
-
+.close{
+  display: flex;
+  width: 40px;
+  height: 40px;
+  color: white;
+}
 </style>
 
 

@@ -1,7 +1,9 @@
 <template>
     <div class="add-blog">
+      <button @click="returnToHome()">
+        return
+      </button>
       <h2>Add new blog post</h2>
-      <form>
         <input
             v-model="article.title"
             type="text"
@@ -9,16 +11,14 @@
         ><br>
         <textarea
             v-model="article.content"
-            type="text"
             placeholder="Введите текст..."
-        ></textarea>
-        <button @click="returnToHome()">
-          return
-        </button>
-        <button @click="addPost()">
+        />
+        <button
+            class="add"
+            @click="addPost(); returnToHome()"
+        >
           ADD
         </button>
-      </form>
     </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
         name: 'Home',
       })
     },
-    addPost(){
+    async addPost (){
       this.$store.commit('ADD_ARTICLE', this.article)
     }
   }
@@ -54,13 +54,15 @@ export default {
 .add-blog{
   display: flex;
   flex-flow: column;
-  font-family: 'Kufam', cursive;
+  justify-content: center;
+  align-items: center;
 }
 h2{
   display: flex;
   background: #a4d8f5;
   justify-content: center;
   align-content: center;
+  width:100%;
 }
 input, textarea{
   background: #f1fdfd;
@@ -77,12 +79,6 @@ textarea{
   border-color: #4c4949;
   border-style: inset;
 }
-form{
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
 button{
   font-family: 'Kufam', cursive;
   font-size: 20px;
@@ -91,5 +87,11 @@ button{
   height: 40px;
   border-radius: 20px;
   margin-top: 10px;
+  justify-content: flex-start;
+  align-self: flex-start;
+  cursor: pointer;
+}
+.add{
+  align-self: center;
 }
 </style>
