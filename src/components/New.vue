@@ -2,16 +2,20 @@
     <div class="add-blog">
       <h2>Add new blog post</h2>
       <form>
-        <input v-model="article.title" type="text" placeholder="Введите название..." ><br>
-        <textarea v-model="article.content" type="text" placeholder="Введите текст..."></textarea>
-        <button
-          @click="returnToHome()"
-        >
+        <input
+            v-model="article.title"
+            type="text"
+            placeholder="Введите название..."
+        ><br>
+        <textarea
+            v-model="article.content"
+            type="text"
+            placeholder="Введите текст..."
+        ></textarea>
+        <button @click="returnToHome()">
           return
         </button>
-        <button
-            @click="addPost()"
-        >
+        <button @click="addPost()">
           ADD
         </button>
       </form>
@@ -25,14 +29,17 @@ export default {
     return{
       article:{
         title:'',
-        content:''
+        content:'',
+        id: '',
+        likes: 0,
+        views: 0,
       }
     }
   },
   methods: {
     returnToHome(){
       this.$router.push({
-        name: 'Home'
+        name: 'Home',
       })
     },
     addPost(){
