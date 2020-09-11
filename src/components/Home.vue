@@ -1,63 +1,65 @@
 <template>
-  <div class="all">
-    <div class="search_input">
-      <input type="text" v-model="search" placeholder="Поиск...">
-    </div>
-    <router-link to="new">
-      <button>
-        Add new post
-      </button>
-    </router-link>
     <div class="articles">
+      <div class="search_input">
+        <input type="text" v-model="search" placeholder="Поиск...">
+      </div>
+      <div class="btn">
+        <router-link to="new">
+          <button>
+            Add new post
+          </button>
+        </router-link>
+      </div>
       <div
           v-for="articles in filteredArticles"
           :key="articles.title"
           class="first"
-          @click="isShow =! isShow"
       >
          Blog title: {{ articles.title }}
          ❤{{ articles.likes}}
          👁{{ articles.views}}
         <div
-            v-if="isShow"
+            v-show="articles.isShow"
             class="showing"
         >
           Blog content: {{ articles.content }}
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
 
 export default {
-  name: 'Home',
-  data () {
-    return{
-      search: '',
-      isShow: false,
-    }
-  },
-  computed: {
-    filteredArticles: function () {
-      return this.$store.state.articles.filter((articles) =>{
+    name: 'Home',
+    data () {
+      return{
+        search: '',
+        isShow: false,
+      }
+    },
+    computed: {
+      filteredArticles() {
+        return this.$store.state.articles.filter((articles) =>{
         return articles.title.match(this.search);
       })
     },
   },
-  methods: {}
+    methods: {
+
+    }
   }
 
 </script>
 
 <style scoped>
+
 .articles{
   display: flex;
   flex-flow: column;
-  align-items: flex-start;
-  justify-content: space-around;
+  align-items: center;
 }
+
 .first{
   display: flex;
   background: #45b3f8;
@@ -65,48 +67,51 @@ export default {
   color: white;
   border-width: 10px;
   border-radius: 10px;
-  width: 40%;
+  width: 520px;
   height: 100px;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-  flex-flow: column;
-
 }
 .first:hover{
   background: darkcyan;
-  width: 42%;
+  width: 540px;
   height: 110px;
-}
-input, textarea{
-  display: flex;
-  height: 30px;
-  width: 40%;
   align-items: center;
+  justify-content: center;
+}
+input{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  height: 30px;
+  width: 520px;
   background: #f2fafa;
   border-radius: 20px;
   font-family: 'Kufam', cursive;
   color: blue;
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .showing{
+  display: flex;
   color: mistyrose;
+  align-self: flex-end;
+  margin-bottom: 10px;
 }
 button{
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   background: #a4d8f5;
   font-family: 'Kufam', cursive;
   color: white;
   font-size: 25px;
   height: 40px;
-  width: 40%;
+  width: 520px;
   border-radius: 10px;
   text-decoration: white;
   margin-bottom: 10px;
-
 }
 
 </style>

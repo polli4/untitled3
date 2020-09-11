@@ -20,7 +20,9 @@ const store = new Vuex.Store({
         ]
     }),
     mutations: {
-
+        ADD_ARTICLE (state, article) {
+            state.articles.push(article)
+        },
     }
 })
 export default store
