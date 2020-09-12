@@ -7,7 +7,11 @@
         ❌
       </button>
       <div class="search_input">
-        <input type="text" v-model="search" placeholder="Поиск...">
+        <input
+            type="text"
+            v-model="search"
+            placeholder="Поиск..."
+        >
       </div>
       <div class="btn">
         <router-link to="new">
@@ -53,7 +57,6 @@ export default {
     },
   },
     methods: {
-
     }
   }
 
@@ -65,6 +68,7 @@ export default {
   display: flex;
   flex-flow: column;
   align-items: center;
+
 }
 
 .first{
@@ -103,8 +107,8 @@ input{
 }
 .showing{
   display: flex;
+  justify-content: flex-start;
   color: mistyrose;
-  align-self: flex-end;
   margin-bottom: 10px;
 }
 button{
@@ -124,9 +128,13 @@ button{
 }
 .close{
   display: flex;
+  justify-content: center;
+  align-self: flex-end;
   width: 40px;
   height: 40px;
-  color: white;
+  background: blue;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 </style>
 
